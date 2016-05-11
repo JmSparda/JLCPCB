@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo;
 
 import include.Usuario;
@@ -13,7 +8,7 @@ import java.sql.PreparedStatement;
  * @author JMLOPEZ
  */
 public class ModeloUsuario extends Conexion{
-    public boolean crearUsuario(Usuario u){
+    /*public boolean crearUsuario(Usuario u){
         PreparedStatement pst = null;
         boolean flag = true;
         try {
@@ -25,5 +20,5 @@ public class ModeloUsuario extends Conexion{
         } catch (Exception e) {
         }
         return flag;
-    }
+    }*/
 }

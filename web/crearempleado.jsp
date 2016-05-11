@@ -3,11 +3,12 @@
     Created on : 07/05/2016, 08:29:33 AM
     Author     : JMLOPEZ
 --%>
+
 <%@page import="Controlador.ControladorTrabajador"%>
 <%@page import="Controlador.ControladorConsultas"%>
 <%
-    Controlador.ControladorConsultas cc = new ControladorConsultas();
-    Controlador.ControladorTrabajador ct = new ControladorTrabajador();
+    ControladorConsultas cc = new ControladorConsultas();
+    ControladorTrabajador ct = new ControladorTrabajador();
 %>
 <!DOCTYPE html>
 <html>
@@ -59,7 +60,7 @@
                         <div class="row">
                           <div class="col-md-6">
                             <!--<input type="text" name="per_id" id="per_id">-->
-                            <%=ct.consultaIDTRABAJDOR()%>
+                            <%//=ct.consultaIDTRABAJDOR()%>
                             <div class="form-group">
                               <label>Apellido Paterno</label>
                               <input type="text" class="form-control" name="per_apellidop" id="per_apellidop" placeholder="Apellido Paterno">
@@ -102,7 +103,7 @@
                             <label>Tipo Documento</label>
                             <select name="per_documentoID" id="per_documentoID" class="form-control">
                               <option value="">--SELECCIONAR--</option>
-                              <%= cc.consultaDocumento()%>
+                              <%//= cc.consultaDocumento()%>
                             </select>
                           </div>
                           <div class="col-md-6">
@@ -150,7 +151,7 @@
                            <div class="col-md-6">
                                 <select name="suc_id" id="suc_id" class="form-control">
                                     <option value="">--SELECCIONAR--</option>
-                                    <%= cc.consultaSucursal()%>
+                                    <//%= cc.consultaSucursal()%>
                                 </select>
                            </div>
                         </div>
@@ -161,7 +162,7 @@
                            <div class="col-md-6">
                                 <select name="rol_id" id="rol_id" class="form-control">
                                     <option value="">--SELECCIONAR--</option>
-                                    <%= cc.consultaRol()%>
+                                    <//%= cc.consultaRol()%>
                                 </select>
                            </div>
                         </div>
