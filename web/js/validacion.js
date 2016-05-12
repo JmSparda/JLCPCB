@@ -298,6 +298,6 @@ function validar(campo){
             $('#'+campo).parent().children("span").text("").hide();
             return true;
         }
-    }
-    
+    }    
 }
+///esto se subio al repositorio GIT :V
