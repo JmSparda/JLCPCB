@@ -49,7 +49,7 @@ public class NuevoTrabajador extends HttpServlet {
             for (int i = 0; i < items.size(); i++) {
                 FileItem item = (FileItem) items.get(i);
                 if(!item.isFormField()){
-                    File archivo = new File("D:\\Proyectos Netbeans\\restWeb\\restWeb\\web\\img\\trabajadores\\"+item.getName());
+                    File archivo = new File("D:\\JmSparda\\Documentos\\Java\\restweb\\web\\img\\trabajadores\\"+item.getName());
                     item.write(archivo);
                     imgs.add("img/trabajadores/"+item.getName());
                 }else{

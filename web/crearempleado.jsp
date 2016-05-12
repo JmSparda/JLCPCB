@@ -20,13 +20,11 @@
   <link href="assets/favicon.ico" rel="shortcut icon">
   <script src="assets/ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src='assets/estilos2.js'></script>
-  <script src="js/jquery.min.js" type="text/javascript"></script>
-  <!--<script src="js/main.js" type="text/javascript"></script>-->
-  <script src="js/bootstrap.js" type="text/javascript"></script>
-  <script src="js/bootstrap.min.js" type="text/javascript"></script>
-  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-  <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+  <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+  <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <script src="js/validacion.js" type="text/javascript"></script>
+  <!--<script src="js/main.js" type="text/javascript"></script>-->
   <title>REGISTRO EMPLEADOS</title>
 </head>
 <body>
@@ -56,7 +54,7 @@
           </div>
           <div class="main-content">
             <!--action="creartrabajador" method="POST" name="frmnuevo" id="frm_nuevo"  enctype="multipart/form-data" class="form-horizontal"--> 
-            <form role="form" class="form-horizontal">
+            <form action="creartrabajador" method="POST" name="frmnuevo" id="frm_nuevo"  enctype="multipart/form-data"  class="form-horizontal">
                 <div class="alert alert-danger text-center" style="display:none;" id="error">
                      <strong>Adventencia: </strong>Debe completar todos los campos
                 </div>
@@ -200,7 +198,7 @@
                             </div>
                         </div>
                                 
-                       <button type="button" class="btn btn-primary" id="btnregistro" onclick="verificar();">Registrar</button>
+                       <button type="button" class="btn btn-primary" id="btnregistro" onclick="verificar();return false;">Registrar</button>
                        <button type="button" class="btn btn-default" id="btncancelar">Cancelar</button>
                     </div>
                   </div>
