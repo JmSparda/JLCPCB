@@ -2,7 +2,7 @@ var v=true;
 $("span.help-block").hide();
 
 function verificar(){
-    var v1=0,v2=0,v3=0,v4=0,v5=0,v6=0,v7=0,v8=0,v9=0,v10=0,v11=0,v12=0,v13=0,v14=0
+    var v1=0,v2=0,v3=0,v4=0,v5=0,v6=0,v7=0,v8=0,v9=0,v10=0,v11=0,v12=0,v13=0,v14=0;
     
     v1=validar('per_apellidop');
     v2=validar('per_apellidom');
@@ -19,18 +19,6 @@ function verificar(){
     v13=validar('rol_id');
     v14=validar('tra_iniciocontrato');
     
-    var apellidop = $('#per_apellidop').val();
-    var apellidom = $('#per_apellidop').val();
-    var nombre = $('#per_nombre').val();
-    var fechanacimiento = $('#per_fechanacimiento').val();
-    var tipodocumento = $('#per_documentoID').val();
-    var numerodocumento = $('#per_numerodocumento').val();
-    var direccion = $('#per_direccion').val();
-    var telefono = $('#per_telefono').val();
-    var email = $('#per_email').val();
-    var sucursal = $('#suc_id').val();
-    var rol = $('#rol_id').val();
-    
     
     if(v1===false || v2===false || v3===false || v4===false || v5===false || v6===false || v7===false || v8===false || v9===false || v10===false || v11===false || v12===false || v13===false || v14===false){
         $("#exito").hide();
@@ -39,8 +27,8 @@ function verificar(){
     }else{
         $("#error").hide();
         $("#exito").show();
-       
-        var data = new FormData($('#frm_nuevo')[0]);
+        
+    var data = new FormData($('#frm_nuevo')[0]);
         $.ajax({
             url : "creartrabajador",
             type : "post",
