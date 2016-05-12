@@ -14,14 +14,19 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=0">
   <link rel='stylesheet' href='assets/estilos.css'>
   <link href='http://fonts.googleapis.com/css?family=Oswald:300,400,700|Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
   <link href="assets/favicon.ico" rel="shortcut icon">
   <script src="assets/ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src='assets/estilos2.js'></script>
   <script src="js/jquery.min.js" type="text/javascript"></script>
-  <script src="js/main.js" type="text/javascript"></script>
+  <!--<script src="js/main.js" type="text/javascript"></script>-->
+  <script src="js/bootstrap.js" type="text/javascript"></script>
+  <script src="js/bootstrap.min.js" type="text/javascript"></script>
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+  <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+  <script src="js/validacion.js" type="text/javascript"></script>
   <title>REGISTRO EMPLEADOS</title>
 </head>
 <body>
@@ -50,32 +55,42 @@
             <h1><i class="icon-bar-chart"></i>Registro Empleados</h1>
           </div>
           <div class="main-content">
-           <form action="creartrabajador" name="frmnuevo" id="frm_nuevo" method="POST" enctype="multipart/form-data" class="form-horizontal">
+            <!--action="creartrabajador" method="POST" name="frmnuevo" id="frm_nuevo"  enctype="multipart/form-data" class="form-horizontal"--> 
+            <form role="form" class="form-horizontal">
+                <div class="alert alert-danger text-center" style="display:none;" id="error">
+                     <strong>Adventencia: </strong>Debe completar todos los campos
+                </div>
+                <div class="alert alert-success text-center" style="display:none;" id="exito">
+                     <strong>Felicidades: </strong>Su registro ha sido guardado
+                </div>
             <div class="row">
               <div class="col-md-6">
-                <div class="widget">
+                <div class="widget">                    
                   <div class="widget-content-white glossed">
                     <div class="padded">
                         <h3 class="form-title form-title-first"><i class="icon-th-list"></i> DATOS PERSONALES</h3>
                         <div class="row">
                           <div class="col-md-6">
                             <!--<input type="text" name="per_id" id="per_id">-->
-                            <%//=ct.consultaIDTRABAJDOR()%>
+                            <%=ct.consultaIDTRABAJDOR()%>
                             <div class="form-group">
                               <label>Apellido Paterno</label>
-                              <input type="text" class="form-control" name="per_apellidop" id="per_apellidop" placeholder="Apellido Paterno">
+                              <input type="text" class="form-control" name="per_apellidop" id="per_apellidop" onkeyup="validar('per_apellidop');"  aria-describedby="inputSuccess2Status" placeholder="Apellido Paterno">
+                              <span class="help-block"></span>
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
                               <label>Apellido Materno</label>
-                              <input type="text" class="form-control" name="per_apellidom" id="per_apellidom" placeholder="Apellido Materno">
+                              <input type="text" class="form-control" name="per_apellidom" id="per_apellidom" onkeyup="validar('per_apellidom');" placeholder="Apellido Materno">
+                              <span class="help-block"></span>
                             </div>
                           </div>
                         </div>
                         <div class="form-group">
                           <label>Nombre</label>
-                          <input type="text" class="form-control" name="per_nombre" id="per_nombre" placeholder="Nombre">
+                          <input type="text" class="form-control" name="per_nombre" id="per_nombre"  onkeyup="validar('per_nombre');" placeholder="Nombre">
+                          <span class="help-block"></span>
                         </div>
                         <div class="row">
                           <div class="col-md-6">
@@ -93,23 +108,29 @@
                               </label>
                             </div>
                           </div>
-                          <div class="col-md-6">
-                            <label>Fecha de Nacimiento</label>
-                            <input type="date" class="form-control" name="per_fechanacimiento" id="per_fechanacimiento" placeholder="Password">
-                          </div>
+                          <div class="col-md-6">  
+                            <div class="form-group">
+                              <label>Fecha de Nacimiento</label>
+                              <input type="date" class="form-control" name="per_fechanacimiento" id="per_fechanacimiento" onkeyup="validar('per_fechanacimiento');" onchange="validar('per_fechanacimiento');" placeholder="Password">
+                              <span class="help-block"></span>
+                            </div>
+                          </div>  
                         </div>
                         <div class="row">
                           <div class="col-md-6">
-                            <label>Tipo Documento</label>
-                            <select name="per_documentoID" id="per_documentoID" class="form-control">
-                              <option value="">--SELECCIONAR--</option>
-                              <%//= cc.consultaDocumento()%>
-                            </select>
+                            <div class="form-group">
+                                <label>Tipo Documento</label>
+                                <select name="per_documentoID" id="per_documentoID" class="form-control" onchange="validar('per_documentoID');">
+                                  <option value="">--SELECCIONAR--</option>
+                                  <%= cc.consultaDocumento()%>
+                                </select>
+                            </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
                               <label>Nro Documento</label>
-                              <input type="text" class="form-control" name="per_numerodocumento" id="per_numerodocumento" placeholder="Numero Documento">
+                              <input type="text" class="form-control" name="per_numerodocumento" id="per_numerodocumento" onkeyup="validar('per_numerodocumento');" placeholder="Numero Documento">
+                              <span class="help-block"></span>
                             </div>
                           </div>
                         </div>
@@ -117,23 +138,27 @@
                           <div class="col-md-6">
                             <div class="form-group">
                               <label>Direccion</label>
-                              <input type="text" class="form-control" name="per_direccion" id="per_direccion"  placeholder="Direccion">
+                              <input type="text" class="form-control" name="per_direccion" id="per_direccion" onkeyup="validar('per_direccion');" placeholder="Direccion">
+                              <span class="help-block"></span>
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
                               <label>Telefono</label>
-                              <input type="text" class="form-control" name="per_telefono" id="per_telefono"  placeholder="Telefono">
+                              <input type="text" class="form-control" name="per_telefono" id="per_telefono" onkeyup="validar('per_telefono');" placeholder="Telefono">
+                              <span class="help-block"></span>
                             </div>
                           </div>
                         </div>
                         <div class="form-group">
                           <label>Email</label>
-                          <input type="email" class="form-control" name="per_email" id="per_email" placeholder="Email">
+                          <input type="email" class="form-control" name="per_email" id="per_email" onkeyup="validar('per_email');" placeholder="Email">
+                          <span class="help-block"></span>
                         </div>
                         <div class="form-group">
                           <label>Foto</label>
-                          <input type="file" class="form-control" name="per_foto[]" id="archivos" placeholder="Email">
+                          <input type="file" class="form-control" name="per_foto[]" id="archivos" onchange="validar('archivos');"  placeholder="Email">
+                          <span class="help-block"></span>
                         </div>
                     </div>
                   </div>
@@ -144,38 +169,39 @@
                   <div class="widget-content-white glossed">
                     <div class="padded">
                        <h3 class="form-title form-title-first"><i class="icon-th-list"></i> DATOS LABORALES</h3>
-                        <div class="row">
-                           <div class="col-md-6">
-                               <label>SUCURSAL</label>
-                           </div>
-                           <div class="col-md-6">
-                                <select name="suc_id" id="suc_id" class="form-control">
+                       
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>SUCURSAL</label>
+                                <select name="suc_id" id="suc_id" class="form-control" onchange="validar('suc_id');">
                                     <option value="">--SELECCIONAR--</option>
-                                    <//%= cc.consultaSucursal()%>
+                                    <%= cc.consultaSucursal()%>
                                 </select>
-                           </div>
+                            </div>
                         </div>
-                        <div class="row">
-                           <div class="col-md-6">
-                               <label>ROL</label>
-                           </div>
-                           <div class="col-md-6">
-                                <select name="rol_id" id="rol_id" class="form-control">
+                        
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>ROL</label>
+                                <select name="rol_id" id="rol_id" class="form-control" onchange="validar('rol_id');">
                                     <option value="">--SELECCIONAR--</option>
-                                    <//%= cc.consultaRol()%>
+                                    <%= cc.consultaRol()%>
                                 </select>
-                           </div>
+                            </div>
                         </div>
+                                
                         <div class="row">
-                           <div class="col-md-6">
-                               <label>Inicio de Contrato</label>
-                           </div>
-                           <div class="col-md-6">
-                               <input type="date" class="form-control" name="tra_iniciocontrato" id="tra_iniciocontrato">
-                           </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                  <label>Inicio de Contrato</label>
+                                  <input type="date" class="form-control" name="tra_iniciocontrato" id="tra_iniciocontrato"  onchange="validar('tra_iniciocontrato');" onkeyup="validar('tra_iniciocontrato');">
+                                  <span class="help-block"></span>
+                                </div>
+                            </div>
                         </div>
-                        <button class="btn btn-primary" id="btnregistro">Registrar</button>
-                        <button class="btn btn-default" id="btncancelar">Cancelar</button>
+                                
+                       <button type="button" class="btn btn-primary" id="btnregistro" onclick="verificar();">Registrar</button>
+                       <button type="button" class="btn btn-default" id="btncancelar">Cancelar</button>
                     </div>
                   </div>
                 </div>

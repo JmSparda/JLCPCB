@@ -6,6 +6,7 @@ package include;
  */
 public class Usuario {
     private int usu_id;
+    private int tra_id;
     private String usu_usuario;
     private String usu_password;
     private String usu_estado;
@@ -13,8 +14,9 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int usu_id, String usu_usuario, String usu_password, String usu_estado) {
+    public Usuario(int usu_id, int tra_id, String usu_usuario, String usu_password, String usu_estado) {
         this.usu_id = usu_id;
+        this.tra_id = tra_id;
         this.usu_usuario = usu_usuario;
         this.usu_password = usu_password;
         this.usu_estado = usu_estado;
@@ -32,6 +34,20 @@ public class Usuario {
      */
     public void setUsu_id(int usu_id) {
         this.usu_id = usu_id;
+    }
+
+    /**
+     * @return the tra_id
+     */
+    public int getTra_id() {
+        return tra_id;
+    }
+
+    /**
+     * @param tra_id the tra_id to set
+     */
+    public void setTra_id(int tra_id) {
+        this.tra_id = tra_id;
     }
 
     /**
@@ -74,6 +90,6 @@ public class Usuario {
      */
     public void setUsu_estado(String usu_estado) {
         this.usu_estado = usu_estado;
-    }
+    } 
     
 }

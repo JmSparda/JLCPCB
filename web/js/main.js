@@ -36,21 +36,6 @@ $(function(){
                                                                  }
                                                             }
                                                             return true;
-                                                            /*if(tipodocumento === "1" && numerodocumento.length === 8){
-                                                                return true;
-                                                            }else{
-                                                                alert("Numero incorrecto de digitos");
-                                                            }
-                                                            if(tipodocumento === "2" && numerodocumento.length === 11){
-                                                                return true;
-                                                            }else{
-                                                                alert("Numero incorrecto de digitos");
-                                                            } 
-                                                            if(tipodocumento === "3" && numerodocumento.length === 10){
-                                                                return true;
-                                                            }else{
-                                                                alert("Numero incorrecto de digitos");
-                                                            }*/
                                                         }
                                                         else{
                                                             alert("Ingrese Alguna imagen de tipo JPG o PNG");
@@ -113,21 +98,20 @@ $(function(){
        var sucursal = $('#suc_id').val();
        var rol = $('#rol_id').val();
        
-        if(validarFields(apellidop, apellidom, nombre, fechanacimiento, tipodocumento, numerodocumento,direccion,telefono,email,sucursal,rol)){
-            var data = new FormData($('#frm_nuevo')[0]);
-            $.ajax({
-                url : "creartrabajador",
-                type : "post",
-                data : data,
-                contentType: false,
-                processData: false,
-                success: function (data) {
-                    alert(data);
-                }
-            });
-        }
-        //alert(validarFields(apellidop, apellidom, nombre, fechanacimiento, tipodocumento, numerodocumento,direccion,telefono,email,sucursal,rol));
-
+       if(validarFields(apellidop, apellidom, nombre, fechanacimiento, tipodocumento, numerodocumento,direccion,telefono,email,sucursal,rol)){
+           var data = new FormData($('#frm_nuevo')[0]);
+           $.ajax({
+               url : "creartrabajador",
+               type : "post",
+               data : data,
+               contentType: false,
+               processData: false,
+               success: function (data) {
+                   alert(data);
+               }
+           });
+       }
+       //alert(validarFields(apellidop, apellidom, nombre, fechanacimiento, tipodocumento, numerodocumento,direccion,telefono,email,sucursal,rol));
    });
 });
 

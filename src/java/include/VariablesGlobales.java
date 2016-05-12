@@ -26,5 +26,7 @@ public class VariablesGlobales {
         DateFormat hourdateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         VariablesGlobales.fechahora_actual = hourdateFormat.format(date);
         
+        //System.out.println(""+fechahora_actual);
+        
     }
 }
