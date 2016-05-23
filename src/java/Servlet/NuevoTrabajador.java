@@ -49,7 +49,7 @@ public class NuevoTrabajador extends HttpServlet {
             for (int i = 0; i < items.size(); i++) {
                 FileItem item = (FileItem) items.get(i);
                 if(!item.isFormField()){
-                    File archivo = new File("D:\\JmSparda\\Documentos\\Java\\restweb\\web\\img\\trabajadores\\"+item.getName());
+                    File archivo = new File("D:\\JmSparda\\Documentos\\Java\\restweb\\web\\assets\\img\\trabajadores\\"+item.getName());
                     item.write(archivo);
                     imgs.add("img/trabajadores/"+item.getName());
                 }else{
@@ -59,10 +59,10 @@ public class NuevoTrabajador extends HttpServlet {
         } catch (Exception e) {    
         }
         
-        Trabajador t = new Trabajador(Integer.parseInt(campos.get(0)), Integer.parseInt(campos.get(12)), Integer.parseInt(campos.get(11)), campos.get(13), Integer.parseInt(campos.get(0)), campos.get(3), campos.get(1), campos.get(2), campos.get(4), campos.get(5), Integer.parseInt(campos.get(6)), Integer.parseInt(campos.get(7)), campos.get(8), campos.get(9), campos.get(10), imgs.get(0));
+        Trabajador t = new Trabajador(Integer.parseInt(campos.get(0)), campos.get(12), Integer.parseInt(campos.get(11)), campos.get(13), Integer.parseInt(campos.get(0)), campos.get(3), campos.get(1), campos.get(2), campos.get(4), campos.get(5), Integer.parseInt(campos.get(6)), Integer.parseInt(campos.get(7)), campos.get(8), campos.get(9), campos.get(10), imgs.get(0));
         ControladorTrabajador ct = new ControladorTrabajador();
         if(ct.crearTrabajador(t)){
-            response.getWriter().println("Producto creado Exitosamente");
+            response.getWriter().println("Trabajador creado Exitosamente");
         }else{
             response.getWriter().println("ERROR AL CREAR PRODUCTO");
         }

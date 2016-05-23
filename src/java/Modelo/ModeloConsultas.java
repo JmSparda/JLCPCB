@@ -6,7 +6,6 @@
 package Modelo;
 
 import include.Documento;
-import include.Rol;
 import include.Sucursal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -64,29 +63,6 @@ public class ModeloConsultas extends Conexion{
             }
         }
         return sucursal;
-    }
-    
-    public ArrayList<Rol> consultaRol(){
-        ArrayList<Rol> rol = new ArrayList<>();
-        PreparedStatement pst = null;
-        ResultSet rs = null;
-        try {
-            String sql = "call consultaRol";
-            pst = getConnection().prepareCall(sql);
-            rs = pst.executeQuery();
-            while (rs.next()) {                
-                rol.add(new Rol(rs.getInt("rol_id"), rs.getString("rol_descripcion"), rs.getString("rol_estado")));
-            }
-        } catch (Exception e) {
-        }finally{
-            try {
-                if(getConnection()!= null) getConnection().close();
-                if(pst !=null) pst.close();
-            } catch (Exception e) {
-                System.err.println("ErrorCone");
-            }
-        }
-        return rol;
     }
     /*public static void main(String[] args) {
         ModeloConsultas consul = new ModeloConsultas();

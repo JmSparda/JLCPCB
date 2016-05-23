@@ -1,44 +1,42 @@
 package include;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author JMLOPEZ
  */
 public class Usuario {
-    private int usu_id;
     private int tra_id;
     private String usu_usuario;
     private String usu_password;
     private String usu_estado;
+    private String usu_last_session;
 
-    public Usuario() {
-    }
-
-    public Usuario(int usu_id, int tra_id, String usu_usuario, String usu_password, String usu_estado) {
-        this.usu_id = usu_id;
+    public Usuario(int tra_id, String usu_usuario, String usu_password, String usu_estado) {
         this.tra_id = tra_id;
         this.usu_usuario = usu_usuario;
         this.usu_password = usu_password;
         this.usu_estado = usu_estado;
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        this.usu_last_session = sdf.format(d);
     }
-
-    /**
-     * @return the usu_id
-     */
-    public int getUsu_id() {
-        return usu_id;
+    
+    public Usuario(String usu_usuario, String usu_password) {
+        this.usu_usuario = usu_usuario;
+        this.usu_password = usu_password;
     }
-
-    /**
-     * @param usu_id the usu_id to set
-     */
-    public void setUsu_id(int usu_id) {
-        this.usu_id = usu_id;
+    
+    public Usuario(String usu_usuario){
+        this.usu_usuario = usu_usuario;
     }
-
+    
     /**
      * @return the tra_id
      */
+    
     public int getTra_id() {
         return tra_id;
     }
@@ -90,6 +88,20 @@ public class Usuario {
      */
     public void setUsu_estado(String usu_estado) {
         this.usu_estado = usu_estado;
-    } 
-    
+    }
+
+    /**
+     * @return the usu_last_session
+     */
+    public String getUsu_last_session() {
+        return usu_last_session;
+    }
+
+    /**
+     * @param usu_last_session the usu_last_session to set
+     */
+    public void setUsu_last_session(String usu_last_session) {
+        this.usu_last_session = usu_last_session;
+    }
+
 }

@@ -2,7 +2,6 @@ package Controlador;
 
 import Modelo.ModeloConsultas;
 import include.Documento;
-import include.Rol;
 import include.Sucursal;
 
 /**
@@ -27,15 +26,6 @@ public class ControladorConsultas {
         for (Sucursal s : consul.consultaSucursal()) {
             htmlcode += "<option value='"+s.getSuc_id()+"'>"+s.getSuc_nombre()+"</option>";
         }        
-        return htmlcode;
-    }
-
-    public String consultaRol(){
-        String htmlcode="";
-        ModeloConsultas consul = new ModeloConsultas();
-        for (Rol r : consul.consultaRol()) {
-            htmlcode += "<option value='"+r.getRol_id()+"'>"+r.getRol_descripcion()+"</option>";
-        }
         return htmlcode;
     }
 }

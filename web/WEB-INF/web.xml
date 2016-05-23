@@ -4,9 +4,81 @@
         <servlet-name>NuevoTrabajador</servlet-name>
         <servlet-class>Servlet.NuevoTrabajador</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>serveprueba</servlet-name>
+        <servlet-class>Servlet.serveprueba</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarTrabajador</servlet-name>
+        <servlet-class>Servlet.EliminarTrabajador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>buscarTrabajador</servlet-name>
+        <servlet-class>Servlet.buscarTrabajador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CrearUsuario</servlet-name>
+        <servlet-class>Servlet.CrearUsuario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>IniciarSecion</servlet-name>
+        <servlet-class>Servlet.IniciarSecion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CerrarSesion</servlet-name>
+        <servlet-class>Servlet.CerrarSesion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CrearPerfil</servlet-name>
+        <servlet-class>Servlet.CrearPerfil</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarPerfil</servlet-name>
+        <servlet-class>Servlet.EliminarPerfil</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarPerfil</servlet-name>
+        <servlet-class>Servlet.ModificarPerfil</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NuevoTrabajador</servlet-name>
         <url-pattern>/creartrabajador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>serveprueba</servlet-name>
+        <url-pattern>/prueba</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarTrabajador</servlet-name>
+        <url-pattern>/deleteTrabajador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>buscarTrabajador</servlet-name>
+        <url-pattern>/searchTrabajador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrearUsuario</servlet-name>
+        <url-pattern>/registrar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IniciarSecion</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CerrarSesion</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrearPerfil</servlet-name>
+        <url-pattern>/addPerfil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarPerfil</servlet-name>
+        <url-pattern>/deletePerfil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarPerfil</servlet-name>
+        <url-pattern>/updatePerfil</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

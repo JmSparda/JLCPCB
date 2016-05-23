@@ -9,7 +9,7 @@
         <span>USUARIO</span>
     </a>
     <div class="relative-w">
-        <ul class="side-menu">
+        <ul class="side-menu side-menu-blue">
             <li class='current'>
                 <a class='current' href="forms.html">
                     <i class="icon-terminal"></i> Empleados

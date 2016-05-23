@@ -18,12 +18,6 @@
   <link rel='stylesheet' href='assets/estilos.css'>
   <link href='http://fonts.googleapis.com/css?family=Oswald:300,400,700|Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
   <link href="assets/favicon.ico" rel="shortcut icon">
-  <script src="assets/ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src='assets/estilos2.js'></script>
-  <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-  <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-  <script src="js/validacion.js" type="text/javascript"></script>
   <!--<script src="js/main.js" type="text/javascript"></script>-->
   <title>REGISTRO EMPLEADOS</title>
 </head>
@@ -46,7 +40,7 @@
     <div class="col-md-9">
       <div class="content-wrapper">
         <div class="content-inner">
-          <div class="page-header">
+          <div class="page-header page-header-dark-blue">
 <!--BOTONES PARA BARRA SUPERIOR DERECHA-->
 <jsp:include page="assets/estructura/BSD.jsp" flush="true" />
 <!--FIN DEBOTONES PARA BARRA SUPERIOR DERECHA-->
@@ -54,7 +48,7 @@
           </div>
           <div class="main-content">
             <!--action="creartrabajador" method="POST" name="frmnuevo" id="frm_nuevo"  enctype="multipart/form-data" class="form-horizontal"--> 
-            <form action="creartrabajador" method="POST" name="frmnuevo" id="frm_nuevo"  enctype="multipart/form-data"  class="form-horizontal">
+            <form action="creartrabajador" method="POST" name="frm_nuevo" id="frm_nuevo"  enctype="multipart/form-data"  class="form-horizontal">
                 <div class="alert alert-danger text-center" style="display:none;" id="error">
                      <strong>Adventencia: </strong>Debe completar todos los campos
                 </div>
@@ -69,8 +63,7 @@
                         <h3 class="form-title form-title-first"><i class="icon-th-list"></i> DATOS PERSONALES</h3>
                         <div class="row">
                           <div class="col-md-6">
-                            <!--<input type="text" name="per_id" id="per_id">-->
-                            <%=ct.consultaIDTRABAJDOR()%>
+                            <%=ct.consultaIDPERSONA()%>
                             <div class="form-group">
                               <label>Apellido Paterno</label>
                               <input type="text" class="form-control" name="per_apellidop" id="per_apellidop" onkeyup="validar('per_apellidop');"  aria-describedby="inputSuccess2Status" placeholder="Apellido Paterno">
@@ -180,11 +173,10 @@
                         
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>ROL</label>
-                                <select name="rol_id" id="rol_id" class="form-control" onchange="validar('rol_id');">
-                                    <option value="">--SELECCIONAR--</option>
-                                    <%= cc.consultaRol()%>
-                                </select>
+                                <label>Puesto</label>
+                                <input type="text" class="form-control" name="tra_puesto" id="tra_puesto" onkeyup="validar('tra_puesto');" placeholder="Puesto">
+                                <span class="help-block"></span>
+                                
                             </div>
                         </div>
                                 
@@ -197,9 +189,8 @@
                                 </div>
                             </div>
                         </div>
-                                
-                       <button type="button" class="btn btn-primary" id="btnregistro" onclick="verificar();return false;">Registrar</button>
-                       <button type="button" class="btn btn-default" id="btncancelar">Cancelar</button>
+                       <button type="button" class="btn btn-primary" id="btnregistro" name="btnregistro" onclick="verificar();return false;">Registrar</button>
+                       <button type="button" class="btn btn-success" id="btnnuevo" name="btnnuevo" onclick="nuevo();" >Nuevo</button>
                     </div>
                   </div>
                 </div>
@@ -213,4 +204,7 @@
   </div>
 </div>
 </body>
+<script src="assets/ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src='assets/estilos2.js'></script>
+<script src="assets/js/validacion.js" type="text/javascript"></script>
 </html>
