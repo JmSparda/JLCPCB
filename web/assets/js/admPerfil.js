@@ -26,7 +26,7 @@ $(function(){
        $.post("updatePerfil",data, function(res,est,jqXHR){
            //alert(res);
            setTimeout(function(){
-               window.location = "perfiles.jsp";
+               window.location = "tabla-perfiles.jsp";
            },300);
        });
    });

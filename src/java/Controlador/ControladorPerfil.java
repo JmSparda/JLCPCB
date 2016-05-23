@@ -101,7 +101,8 @@ public class ControladorPerfil {
 "                            </div>\n" +
 "            </div>\n" +
 "                            <div class=\"modal-footer\">\n" +
-"                                <button type=\"button submit\" class=\"btn btn-primary\" id=\"btnmodificarperfil\" name='btnmodificarperfil' >Guardar</button>\n" +
+                                "<a href='tabla-perfiles.jsp' class=\"btn btn-default\">CANCELAR</a>\n" +
+"                                <button type=\"button submit\" class=\"btn btn-primary\" id=\"btnmodificarperfil\" name='btnmodificarperfil' >GUARDAR</button>\n" +
 "                            </div>\n" +
 "        </div>\n" +
 "    </form>\n" +

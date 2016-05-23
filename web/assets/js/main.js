@@ -131,7 +131,7 @@ $(function(){ //utilizando VALIDATE de JQUERY
                    $('#prof_nombre').val("");
                    $('#prof_descripcion').val("");
                    setTimeout(function(){
-                       window.location = "perfiles.jsp";
+                       window.location = "tabla-perfiles.jsp";
                    },100);
                }else{
                    alert("Error al Registrar Perfil");
