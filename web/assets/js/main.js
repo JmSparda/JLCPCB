@@ -123,7 +123,7 @@ $(function(){ //utilizando VALIDATE de JQUERY
       
       submitHandler : function(form){
            var data = $("#frmregistroperfil").serialize(); //Se serializan los datos
-           console.log(data); // esto es para ver si ha enviado por consola la data serializada
+           //console.log(data); // esto es para ver si ha enviado por consola la data serializada
            $.post("addPerfil",data,function(res, est, jqXHR){
                //alert(res);
                if(res === "1"){
@@ -135,6 +135,50 @@ $(function(){ //utilizando VALIDATE de JQUERY
                    },100);
                }else{
                    alert("Error al Registrar Perfil");
+               }
+           });
+       }
+      
+   });
+
+   $("#frmregistromodulo").validate({
+      rules :{
+          modu_cod : {
+              required : true
+          },
+          modu_nombre : {
+              required : true
+          },
+          modu_desc : {
+              required : true
+          }
+      },
+      messages : {
+          modu_cod : {
+              required: "Ingrese un codigo"
+          },
+          modu_nombre : {
+              required : "Ingrese un Nombre"
+          },
+          modu_desc : {
+              required : "Ingrese una Descripcion"
+          }
+      },
+      
+      submitHandler : function(form){
+           var data = $("#frmregistromodulo").serialize(); //Se serializan los datos
+           //console.log(data); // esto es para ver si ha enviado por consola la data serializada
+           $.post("addModulo",data,function(res, est, jqXHR){
+               //alert(res);
+               if(res === "1"){
+                   $('#modu_cod').val("");
+                   $('#modu_nombre').val("");
+                   $('#modu_desc').val("");
+                   setTimeout(function(){
+                       window.location = "tabla-modulos.jsp";
+                   },100);
+               }else{
+                   alert("Error al Registrar Modulo");
                }
            });
        }
