@@ -30,10 +30,10 @@
             <div class="widget-body">
                 <div class="widget-forms clearfix">
                     <div class="control-group">
-                        <label class="control-label">Trabajador</label>
+                        <label class="control-label">PERSONA</label>
                         <div class="controls">
                             <div class="input-append bootstrap-timepicker-component">
-                                <select name="tra_id" id="tra_id" class="form-control">
+                                <select name="per_id" id="per_id" class="form-control">
                                   <option value="" selected="selected">--SELECCIONAR--</option>
                                   <%= ct.consultaTrabajadorCBX()%>
                                 </select>

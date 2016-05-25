@@ -8,14 +8,24 @@ import java.util.Date;
  * @author JMLOPEZ
  */
 public class Usuario {
-    private int tra_id;
+    private int usu_id;
+    private int per_id;
     private String usu_usuario;
     private String usu_password;
     private String usu_estado;
     private String usu_last_session;
 
-    public Usuario(int tra_id, String usu_usuario, String usu_password, String usu_estado) {
-        this.tra_id = tra_id;
+    public Usuario(int usu_id, int per_id, String usu_usuario, String usu_password, String usu_estado, String usu_last_session) {
+        this.usu_id = usu_id;
+        this.per_id = per_id;
+        this.usu_usuario = usu_usuario;
+        this.usu_password = usu_password;
+        this.usu_estado = usu_estado;
+        this.usu_last_session = usu_last_session;
+    }
+
+    public Usuario(int per_id, String usu_usuario, String usu_password, String usu_estado) {
+        this.per_id = per_id;
         this.usu_usuario = usu_usuario;
         this.usu_password = usu_password;
         this.usu_estado = usu_estado;
@@ -23,6 +33,16 @@ public class Usuario {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         this.usu_last_session = sdf.format(d);
     }
+    
+    public Usuario(int usu_id, String usu_usuario, String usu_estado) {
+        this.usu_id = usu_id;
+        this.usu_usuario = usu_usuario;
+        this.usu_estado = usu_estado;
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        this.usu_last_session = sdf.format(d);
+    }
+    
     
     public Usuario(String usu_usuario, String usu_password) {
         this.usu_usuario = usu_usuario;
@@ -37,15 +57,15 @@ public class Usuario {
      * @return the tra_id
      */
     
-    public int getTra_id() {
-        return tra_id;
+    public int getPer_id() {
+        return per_id;
     }
 
     /**
-     * @param tra_id the tra_id to set
+     * @param per_id the tra_id to set
      */
-    public void setTra_id(int tra_id) {
-        this.tra_id = tra_id;
+    public void setPer_id(int per_id) {
+        this.per_id = per_id;
     }
 
     /**
@@ -102,6 +122,20 @@ public class Usuario {
      */
     public void setUsu_last_session(String usu_last_session) {
         this.usu_last_session = usu_last_session;
+    }
+
+    /**
+     * @return the usu_id
+     */
+    public int getUsu_id() {
+        return usu_id;
+    }
+
+    /**
+     * @param usu_id the usu_id to set
+     */
+    public void setUsu_id(int usu_id) {
+        this.usu_id = usu_id;
     }
 
 }

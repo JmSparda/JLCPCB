@@ -6,7 +6,6 @@
 package Servlet;
 
 import Controlador.ControladorUsuario;
-import include.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author FAST
  */
-public class CrearUsuario extends HttpServlet {
+public class EliminarUsuario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,19 +31,12 @@ public class CrearUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        int per_id = Integer.parseInt(request.getParameter("per_id"));
-        String usu_usuario = request.getParameter("usu_usuario");
-        String usu_password = request.getParameter("usu_password");
-        String usu_estado = request.getParameter("usu_estado");
-        
-        Usuario user = new Usuario(per_id, usu_usuario, usu_password, usu_estado);
-        ControladorUsuario cu = new ControladorUsuario();
-        
-        if(cu.crearUsuario(user)){
-            response.getWriter().print("1");
-        }else{
-            response.getWriter().print("0");
+        int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+        Controlador.ControladorUsuario cu = new ControladorUsuario();
+        if(cu.eliminarUSUARIO(idUsuario)){
+            response.getWriter().println("USUARIO Eliminado Exitosamente");
+        } else {
+            response.getWriter().println("Error al eliminar USUARIO");
         }
     }
 

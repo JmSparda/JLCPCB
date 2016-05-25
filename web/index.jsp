@@ -4,9 +4,12 @@
     Author     : FAST
 --%>
 
-<%@page session="false" %> 
-<%@page language="java"  contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    HttpSession sesion = request.getSession(true);
+    Object usu_usuario = session.getAttribute("usu_usuario") == null ? null : session.getAttribute("usu_usuario");
+%>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -22,6 +25,18 @@
     <link href="assets/css/form.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+     <%
+         if(usu_usuario == null){
+         }else{
+     %>
+     <script>
+            setTimeout(function(){
+                window.location = "dashboard.jsp";
+            },0); 
+     </script>
+     <%
+         }
+     %>
     <div id="wrap">
     <div class="container-fluid">
       <div class="row-fluid">
@@ -45,12 +60,12 @@
                             </div>
                             <input type="hidden" name="login" value="1"/>
                             <div class="control-group">
-                                <a href="registro.jsp">Registrarme</a>
+                                <!--<a href="registro.jsp">Registrarme</a>-->
                             </div>
                             <!--<div class="control-group">
                                 <a href="">Recuperar Contraseña</a>
                             </div>-->
-                            <div class="control-group">
+                            <div class="control-group col-md-2 col-md-offset-3">
                                 <button type="button submit" class="btn btn-primary" id="btniniciar" name="btniniciar">Iniciar Seccion</button>
                             </div>
                         </form>

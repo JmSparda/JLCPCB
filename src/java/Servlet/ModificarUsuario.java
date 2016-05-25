@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author FAST
  */
-public class CrearUsuario extends HttpServlet {
+public class ModificarUsuario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,19 +32,16 @@ public class CrearUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        int per_id = Integer.parseInt(request.getParameter("per_id"));
+        int usu_id = Integer.parseInt(request.getParameter("usu_id"));
         String usu_usuario = request.getParameter("usu_usuario");
         String usu_password = request.getParameter("usu_password");
         String usu_estado = request.getParameter("usu_estado");
-        
-        Usuario user = new Usuario(per_id, usu_usuario, usu_password, usu_estado);
+        Usuario u =new Usuario(usu_id, usu_usuario, usu_password, usu_estado);
         ControladorUsuario cu = new ControladorUsuario();
-        
-        if(cu.crearUsuario(user)){
-            response.getWriter().print("1");
+        if(cu.updateUSUARIO(u)){
+            response.getWriter().print("PERFIL MODIFICADO");
         }else{
-            response.getWriter().print("0");
+            response.getWriter().print("ERROR AL MODIFICAR PERFIL");
         }
     }
 

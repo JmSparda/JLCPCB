@@ -52,6 +52,14 @@
         <servlet-name>ModificarModulo</servlet-name>
         <servlet-class>Servlet.ModificarModulo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EliminarUsuario</servlet-name>
+        <servlet-class>Servlet.EliminarUsuario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarUsuario</servlet-name>
+        <servlet-class>Servlet.ModificarUsuario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NuevoTrabajador</servlet-name>
         <url-pattern>/creartrabajador</url-pattern>
@@ -103,6 +111,14 @@
     <servlet-mapping>
         <servlet-name>ModificarModulo</servlet-name>
         <url-pattern>/updateModulo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarUsuario</servlet-name>
+        <url-pattern>/deleteUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarUsuario</servlet-name>
+        <url-pattern>/updateUsuario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,8 +1,8 @@
-$(function(){ //utilizando VALIDATE de JQUERY
+$(document).ready(function(){ //utilizando VALIDATE de JQUERY
    $("#frmregistrousuario").validate({
        rules : { //SE CREAN LAS REGLAS
            
-           tra_id : {
+           per_id : {
                 required: true
            },
            usu_usuario : {
@@ -19,7 +19,7 @@ $(function(){ //utilizando VALIDATE de JQUERY
            }
        },
        messages : { //CREAMOS LOS MENSAJES PARA CADA REGLA
-           tra_id : {
+           per_id : {
                required : "Seleccione a un Trabajador"
            },
            
@@ -43,14 +43,14 @@ $(function(){ //utilizando VALIDATE de JQUERY
            $.post("registrar",data,function(res, est, jqXHR){
                //alert(res);
                if(res === "1"){
-                   $('#tra_id').defaultSelected;
+                   $('#per_id').defaultSelected;
                    $('#usu_usuario').val("");
                    $('#usu_password').val("");
                    $('#usu_pass2').val("");
-                   alert("Registro Correcto haga clic en aceptar para ser redireccionado al Login");
+                   //alert("Registro Correcto haga clic en aceptar para ser redireccionado al Login");
                    setTimeout(function(){
-                       window.location = "dashboard.jsp";
-                   },300);
+                       window.location = "tabla-usuarios.jsp";
+                   },100);
                }else{
                    alert("Error al Registrar Usuario");
                }
@@ -84,7 +84,7 @@ $(function(){ //utilizando VALIDATE de JQUERY
            var data = $("#frmlogin").serialize();
            $.post("login", data, function(res, est, jqXHR){
                if(res==="1"){
-                   alert("Binvenido, presione aceptar para ser redireccionado al panel principal");
+                   //alert("Binvenido, presione aceptar para ser redireccionado al panel principal");
                    setTimeout(function(){
                        window.location = "dashboard.jsp";
                    },300);

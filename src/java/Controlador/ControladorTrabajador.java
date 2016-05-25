@@ -18,7 +18,7 @@ public class ControladorTrabajador {
         String htmlcode = "";
         ModeloTrabajador modelot = new ModeloTrabajador();
         for (Trabajador t : modelot.consultaTrabajador()) {
-            htmlcode += "<option value='"+t.getTra_id()+"'>"+t.getPer_numerodocumento()+"</option>";
+            htmlcode += "<option value='"+t.getPer_id()+"'>"+t.getPer_numerodocumento()+"</option>";
             //htmlcode += "<option value=\"DNI\">DNI</option>";
         }
         return htmlcode;

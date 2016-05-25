@@ -35,9 +35,13 @@
         
         <%
             }else{
-                response.getWriter().print("INICIAR SESION ");
-                response.getWriter().print("<a href='index.jsp'>Iniciar Session</a>");
-            }
+        %>
+    <script>
+            setTimeout(function(){
+                window.location = "index.jsp";
+            },0); 
+     </script>
+        <%   }
         %>
     </body>
 </html>
