@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.ModeloModulo;
+import include.Datos;
 import include.Modulo;
 
 /**
@@ -116,13 +117,31 @@ public class ControladorModulo {
         return mm.updateModulo(m);
     }
     
-    
-    
     //ELIMINAR MODULO
     public boolean eliminarModulo(int id){
         Modelo.ModeloModulo mm = new ModeloModulo();
         return mm.eliminarModulo(id);
     }
     
+    //CONSULTA MODULOS EN CHECKBOX
+    public String consultaMODULOCHECKBOX(){
+        String htmlcode = "";
+        ModeloModulo mm = new ModeloModulo();
+        for(Modulo m : mm.consultaModuloActivo()){
+            htmlcode +=
+                    "<li class=\"list-group-item\">\n" +
+"                           "+m.getModu_nombre()+"\n" +
+"                           <div class=\"material-switch pull-right\">\n" +
+"                               <input id='"+m.getModu_id()+"' name=\"prof_modu[]\" value='"+m.getModu_id()+"' type=\"checkbox\"/>\n" +
+"                               <label for='"+m.getModu_id()+"' class=\"label-primary\"></label>\n" +
+"                           </div>\n" +
+"                       </li>";
+        }
+        return htmlcode;
+    }
     
+    public boolean crearPROFMODU(Datos d){
+        ModeloModulo mm = new ModeloModulo();
+        return mm.crearProfModuf(d);
+    }
 }

@@ -42,56 +42,56 @@
                 <jsp:include page="assets/estructura/BLI.jsp" flush="true" />
                 <!--FIN DE LA BARRA LATERAL IZQUIERDA-->
             </div>
-                <div class="col-md-9">
-                    <div class="content-wrapper">
-                        <div class="content-inner content-inner-white">
-                            <div class="page-header page-header-dark-blue">
-                                <!--BOTONES PARA BARRA SUPERIOR DERECHA-->
-                                <jsp:include page="assets/estructura/BSD.jsp" flush="true" />
-                                <!--FIN DEBOTONES PARA BARRA SUPERIOR DERECHA-->
-                                <h1><i class="icon-bar-chart"></i>Registro de Usuarios</h1>
-                            </div>
-                                <div class="main-content">
-                                    <div class="widget">
-                                        <h3 class="section-title first-title"><i class="icon-table"></i>Tabla Usuarios</h3>
-                                        <div class=" row">
-                                            <div class="">
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalRegistro" data-backdrop="static" data-keyboard="false">
-                                                    <span class="btn-label"><i class="icon-plus"></i></span>Nuevo Usuario
-                                                </button>
-                                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalRegistroPerfil" data-backdrop="static" data-keyboard="false">
-                                                    <span class="btn-label"><i class="icon-group"></i></span>Agregar Perfil
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="widget-content-white glossed">
-                                            <div class="padded">
-                                                <table class="table table-striped table-bordered table-hover datatable">
-                                                    <thead>
-                                                        <tr>
-                                                            <th><div class="checkbox"><input type="checkbox"></div></th>
-                                                            <th>ID</th>
-                                                            <th>NOMBRE</th>
-                                                            <th>USUARIO</th>
-                                                            <th>ULTIMA SESSION</th>
-                                                            <th>ESTADO</th>
-                                                            <!--<th>Status</th>-->
-                                                            <th></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <!-- DATOS DE LA BD EN LA TABLA-->
-                                                        <%=cu.consultaUSUARIO()%>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
+            <div class="col-md-9">
+                <div class="content-wrapper">
+                    <div class="content-inner content-inner-white">
+                        <div class="page-header page-header-dark-blue">
+                            <!--BOTONES PARA BARRA SUPERIOR DERECHA-->
+                            <jsp:include page="assets/estructura/BSD.jsp" flush="true" />
+                            <!--FIN DEBOTONES PARA BARRA SUPERIOR DERECHA-->
+                            <h1><i class="icon-bar-chart"></i>Registro de Usuarios</h1>
+                        </div>
+                        <div class="main-content">
+                            <div class="widget">
+                                <h3 class="section-title first-title"><i class="icon-table"></i>Tabla Usuarios</h3>
+                                <div class=" row">
+                                    <div class="">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalRegistro" data-backdrop="static" data-keyboard="false">
+                                            <span class="btn-label"><i class="icon-plus"></i></span>Nuevo Usuario
+                                        </button>
+                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalRegistroPerfil" data-backdrop="static" data-keyboard="false">
+                                            <span class="btn-label"><i class="icon-group"></i></span>Asignar Perfil a Usuario
+                                        </button>
                                     </div>
                                 </div>
+                                <br>
+                                <div class="widget-content-white glossed">
+                                    <div class="padded">
+                                        <table class="table table-striped table-bordered table-hover datatable">
+                                            <thead>
+                                                <tr>
+                                                    <th><div class="checkbox"><input type="checkbox"></div></th>
+                                                    <th>ID</th>
+                                                    <th>NOMBRE</th>
+                                                    <th>USUARIO</th>
+                                                    <th>ULTIMA SESSION</th>
+                                                    <th>ESTADO</th>
+                                                    <!--<th>Status</th>-->
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- DATOS DE LA BD EN LA TABLA-->
+                                                <%=cu.consultaUSUARIO()%>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
 </div>
 

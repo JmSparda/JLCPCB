@@ -3,9 +3,13 @@
     Created on : 21/05/2016, 12:11:49 PM
     Author     : FAST
 --%>
+<%@page import="Controlador.ControladorModulo"%>
 <%@page import="Controlador.ControladorPerfil"%>
 <!DOCTYPE html>
-<%Controlador.ControladorPerfil cp = new ControladorPerfil();%>
+<%
+    Controlador.ControladorPerfil cp = new ControladorPerfil();
+    Controlador.ControladorModulo cm = new ControladorModulo();
+%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -15,6 +19,7 @@
     <link href="assets/favicon.ico" rel="shortcut icon">
     <link href="assets/apple-touch-icon.png" rel="apple-touch-icon">
     <link href="assets/css/form.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/other.css" rel="stylesheet" type="text/css"/>
     
     <title>Tabla de Perfiles</title>
 </head>
@@ -46,9 +51,14 @@
                                 <div class="main-content">
                                     <div class="widget">
                                         <h3 class="section-title first-title"><i class="icon-table"></i>Tabla Perfiles</h3>
-                                        <div class="text-right row">
-                                            <div class="col-md-1">
-                                                <button type="button" class="btn btn-primary btn-round" data-toggle="modal" data-target="#myModalRegistro" data-backdrop="static" data-keyboard="false">Nuevo Perfil</button>
+                                        <div class="row">
+                                            <div class="">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalRegistro" data-backdrop="static" data-keyboard="false">
+                                                    <span class="btn-label"><i class="icon-plus"></i></span>Nuevo Perfil
+                                                </button>
+                                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalRegistroModuloPerfil" data-backdrop="static" data-keyboard="false">
+                                                    <span class="btn-label"><i class="icon-group"></i></span>Asignar Módulo a Perfil
+                                                </button>
                                             </div>
                                             
                                         </div>
@@ -86,58 +96,93 @@
 <div class="modal fade" id="myModalRegistro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <form action="addPerfil" class="form-horizontal" id="frmregistroperfil" name="frmregistroperfil" method="POST">
-        <div class="modal-content ">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Registro de Perfiles</h4>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label>CODIGO</label>
-                            <input type="text"  class="form-control" name="prof_codigo" id="prof_codigo" placeholder="CODIGO">
-                            <span class="help-block"></span>
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Registro de Perfiles</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>CODIGO</label>
+                                <input type="text"  class="form-control" name="prof_codigo" id="prof_codigo" placeholder="CODIGO">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label>NOMBRE</label>
+                                <input type="text" class="form-control" name="prof_nombre" id="prof_nombre" placeholder="NOMBRE">
+                                <span class="help-block"></span>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-9">
-                        <div class="form-group">
-                            <label>NOMBRE</label>
-                            <input type="text" class="form-control" name="prof_nombre" id="prof_nombre" placeholder="NOMBRE">
-                            <span class="help-block"></span>
+                    <label class="control-label" >DESCRIPCION</label>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="5" name="prof_descripcion" id="prof_descripcion" placeholder="DESCRIPCION"></textarea>
+                        <span class="help-block"></span>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">ESTADO</label><br>
+                        <div class="controls">
+                            <div class="radio input-append bootstrap-timepicker-component">
+                                <label>
+                                    <input type="radio" name="prof_estado" id="prof_estado"  value="A" checked>
+                                    Activo
+                                </label>
+                            </div>
+                            <div class="radio input-append bootstrap-timepicker-component">
+                                <label>
+                                    <input type="radio" name="prof_estado" id="prof_estado" value="D">
+                                    No Activo
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
-                            <label class="control-label" >DESCRIPCION</label>
-                            <div class="form-group">
-                                <textarea class="form-control" rows="5" name="prof_descripcion" id="prof_descripcion" placeholder="DESCRIPCION"></textarea>
-                                <span class="help-block"></span>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">ESTADO</label><br>
-                                <div class="controls">
-                                    <div class="radio input-append bootstrap-timepicker-component">
-                                        <label>
-                                            <input type="radio" name="prof_estado" id="prof_estado"  value="A" checked>
-                                            Activo
-                                        </label>
-                                    </div>
-                                    <div class="radio input-append bootstrap-timepicker-component">
-                                        <label>
-                                            <input type="radio" name="prof_estado" id="prof_estado" value="D">
-                                            No Activo
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button submit" class="btn btn-primary" >Guardar</button>
+                </div>
             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                <button type="button submit" class="btn btn-primary" >Guardar</button>
-                            </div>
-        </div>
-    </form>
+        </form>
     </div>
-</div>                                             
+</div>
+<div class="modal fade" id="myModalRegistroModuloPerfil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <form action="addProfModu" class="form-horizontal" id="frmregistroperfilmodulo" name="frmregistroperfilmodulo" method="POST">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Agregar Perfil a Usuario</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <label class="control-label">PERFIL</label>
+                        <div class="controls">
+                            <div class="input-append bootstrap-timepicker-component">
+                                <select name="prof_id" id="usu_id" class="form-control">
+                                  <option value="" selected="selected">--SELECCIONAR--</option>
+                                  <%= cp.consultaPerfilCBX()%>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="controls">
+                            <label>Modulos</label>
+                            <%=cm.consultaMODULOCHECKBOX()%>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button type="button submit" class="btn btn-primary" id="btnregistrousuarioperfil" name="btnregistrousuarioperfil">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 </body>
 <script src="assets/ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="assets/ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>

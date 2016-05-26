@@ -55,6 +55,20 @@ public class ControladorPerfil {
         return htmlcode;
     }
     
+    //CONSULTA EN COMBOBOX
+    public String consultaPerfilCBX(){
+        String htmlcode = "";
+        ModeloPerfil modelot = new ModeloPerfil();
+        for (Perfil p : modelot.consultaPerfilActivo()) {
+            htmlcode += "<option value='"+p.getProf_id()+"'>"+p.getProf_nombre()+"</option>";
+            //htmlcode += "<option value=\"DNI\">DNI</option>";
+        }
+        return htmlcode;
+    }
+    
+    
+    
+    
     //ACTUALIZAR PERFIL
     public String getEditViewPerfil(int idPerfil){
         ModeloPerfil mp = new ModeloPerfil();

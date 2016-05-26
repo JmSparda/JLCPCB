@@ -1,5 +1,6 @@
 package Modelo;
 
+import include.Datos;
 import include.Modulo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,13 +42,37 @@ public class ModeloModulo extends Conexion {
     }
     
     
-    //CONSULTAR PERFILES
+    //CONSULTAR MODULOS
     public ArrayList<Modulo> consultaModulo(){
         ArrayList<Modulo> modulo = new ArrayList<>();
         PreparedStatement pst = null;
         ResultSet rs = null;
         try {
             String sql = "call consultaModulo()";
+            pst = getConnection().prepareCall(sql);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                modulo.add(new Modulo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(6)));
+            }
+        } catch (Exception e) {
+        } finally{
+            try {
+                if(getConnection()!=null) getConnection().close();
+                if(pst !=null) pst.close();
+            } catch (Exception e) {
+                System.err.println("ERRORCONE");
+            }
+        }
+        return modulo;
+    }
+    
+    //CONSULTA MODULOS ACTIVOS
+    public ArrayList<Modulo> consultaModuloActivo(){
+        ArrayList<Modulo> modulo = new ArrayList<>();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        try {
+            String sql = "call consultaModuloActivo()";
             pst = getConnection().prepareCall(sql);
             rs = pst.executeQuery();
             while(rs.next()){
@@ -131,6 +156,33 @@ public class ModeloModulo extends Conexion {
             }
         } catch (Exception e) {
         } finally{
+            try {
+                if(getConnection()!= null) getConnection().close();
+                if(pst !=null) pst.close();
+            } catch (Exception e) {
+                System.err.println("ErrorCone");
+            }
+        }
+        return flag;
+    }
+    
+    //CREAR PERFIL_MODULO
+    public boolean crearProfModuf(Datos d){
+        
+        PreparedStatement pst = null;
+        boolean flag = false;
+        try {
+            String sql = "call crearProfModu(?,?)";
+            pst = getConnection().prepareCall(sql);
+            pst.setInt(1, d.getValor6());
+            pst.setInt(2, d.getValor8());
+            
+            if(pst.executeUpdate()==1){
+                flag = true;
+            }
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }finally{
             try {
                 if(getConnection()!= null) getConnection().close();
                 if(pst !=null) pst.close();
