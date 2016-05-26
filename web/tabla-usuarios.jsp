@@ -3,13 +3,15 @@
     Created on : 23/05/2016, 07:57:27 PM
     Author     : FAST
 --%>
+<%@page import="Controlador.ControladorPerfil"%>
 <%@page import="Controlador.ControladorTrabajador"%>
 <%@page import="Controlador.ControladorUsuario"%>
 <!DOCTYPE html>
 <%
     ControladorUsuario cu = new ControladorUsuario();
+    ControladorTrabajador ct = new ControladorTrabajador();
+    ControladorPerfil cp = new ControladorPerfil();
 %>
-<% Controlador.ControladorTrabajador ct = new ControladorTrabajador();%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -19,6 +21,9 @@
     <link href="assets/favicon.ico" rel="shortcut icon">
     <link href="assets/apple-touch-icon.png" rel="apple-touch-icon">
     <link href="assets/css/form.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/other.css" rel="stylesheet" type="text/css"/>
+    
+    
     <title>Tabla de Usuarios</title>
 </head>
 <body class="body-dark-linen">
@@ -49,11 +54,15 @@
                                 <div class="main-content">
                                     <div class="widget">
                                         <h3 class="section-title first-title"><i class="icon-table"></i>Tabla Usuarios</h3>
-                                        <div class="text-right row">
-                                            <div class="col-md-1">
-                                                <button type="button" class="btn btn-primary btn-round" data-toggle="modal" data-target="#myModalRegistro" data-backdrop="static" data-keyboard="false">Nuevo Usuario</button>
+                                        <div class=" row">
+                                            <div class="">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalRegistro" data-backdrop="static" data-keyboard="false">
+                                                    <span class="btn-label"><i class="icon-plus"></i></span>Nuevo Usuario
+                                                </button>
+                                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalRegistroPerfil" data-backdrop="static" data-keyboard="false">
+                                                    <span class="btn-label"><i class="icon-group"></i></span>Agregar Perfil
+                                                </button>
                                             </div>
-                                            
                                         </div>
                                         <br>
                                         <div class="widget-content-white glossed">
@@ -89,13 +98,13 @@
 <div class="modal fade" id="myModalRegistro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <form action="addUsuario" class="form-horizontal" id="frmregistrousuario" name="frmregistrousuario" method="POST">
-        <div class="modal-content ">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Registro de Usuarios</h4>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <label class="control-label">PERSONA</label>
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Registro de Usuarios</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <label class="control-label">PERSONA</label>
                         <div class="controls">
                             <div class="input-append bootstrap-timepicker-component">
                                 <select name="per_id" id="per_id" class="form-control">
@@ -104,32 +113,31 @@
                                 </select>
                             </div>
                         </div>
-                </div>
-                <div class="row">
-                    <div class="controls">
-                        <label>USUARIO</label>
-                        <input type="text"  class="form-control" name="usu_usuario" id="usu_usuario" placeholder="USUARI">
-                        <span class="help-block"></span>
                     </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>CONTRASEÑA</label>
-                            <input type="password" class="form-control" name="usu_password" id="usu_password" placeholder="NOMBRE">
+                    <div class="row">
+                        <div class="controls">
+                            <label>USUARIO</label>
+                            <input type="text"  class="form-control" name="usu_usuario" id="usu_usuario" placeholder="USUARI">
                             <span class="help-block"></span>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>VERIFICAR CONTRASEÑA</label>
-                            <input type="password" class="form-control" name="usu_pass2" id="usu_pass2" placeholder="NOMBRE">
-                            <span class="help-block"></span>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>CONTRASEÑA</label>
+                                <input type="password" class="form-control" name="usu_password" id="usu_password" placeholder="NOMBRE">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>VERIFICAR CONTRASEÑA</label>
+                                <input type="password" class="form-control" name="usu_pass2" id="usu_pass2" placeholder="NOMBRE">
+                                <span class="help-block"></span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="control-group">
+                    <div class="control-group">
                         <label class="control-label">Estado</label><br>
                         <div class="controls">
                             <div class="radio input-append bootstrap-timepicker-component">
@@ -145,15 +153,53 @@
                               </label>
                             </div>
                         </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button type="button submit" class="btn btn-primary" id="btnregistro" name="btnregistro">Guardar</button>
+                    </div>
                 </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                <button type="button submit" class="btn btn-primary" id="btnregistro" name="btnregistro">Guardar</button>
-                            </div>
-        </div>
-    </form>
+            </div>
+        </form>
     </div>
-</div>                                             
+</div>
+                                
+<div class="modal fade" id="myModalRegistroPerfil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <form action="addUsuProf" class="form-horizontal" id="frmregistrousuarioperfil" name="frmregistrousuarioperfil" method="POST">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Agregar Perfil a Usuario</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <label class="control-label">USUARIO</label>
+                        <div class="controls">
+                            <div class="input-append bootstrap-timepicker-component">
+                                <select name="usu_id" id="usu_id" class="form-control">
+                                  <option value="" selected="selected">--SELECCIONAR--</option>
+                                  <%= cu.consultaUsuarioCBX()%>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="controls">
+                            <label>PERFILES</label>
+                            <%=cp.consultaPERFILCHECKBOX()%>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button type="button submit" class="btn btn-primary" id="btnregistrousuarioperfil" name="btnregistrousuarioperfil">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>  
+
 </body>
 <script src="assets/ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="assets/ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>

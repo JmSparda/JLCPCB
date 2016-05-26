@@ -61,6 +61,31 @@ $(document).ready(function(){ //utilizando VALIDATE de JQUERY
        }
    });
    
+   $("#frmregistrousuarioperfil").validate({
+       rules : { //SE CREAN LAS REGLAS
+           
+           usu_id : {
+                required: true
+           }
+       },
+       messages : { //CREAMOS LOS MENSAJES PARA CADA REGLA
+           usu_id : {
+               required : "Seleccione a un Usuario"
+           }
+       },
+       
+       submitHandler : function(form){
+           //form.submit();
+           //alert();
+           var data = $("#frmregistrousuarioperfil").serialize(); //Se serializan los datos
+           //console.log(data); // esto es para ver si ha enviado por consola la data serializada
+           $.post("addUsuProf",data,function(res, est, jqXHR){
+
+               window.location = "tabla-usuarios.jsp";
+           });
+       }
+   });
+   
    $("#frmlogin").validate({
        rules : { //SE CREAN LAS REGLAS
            

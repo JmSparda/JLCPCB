@@ -20,10 +20,35 @@ public class Datos {
     private double valor13;
     private double valor14;
     private double valor15;
+    
+    private int[] valor16;
+    private String[] valor17;
 
     public Datos() {
     }
 
+    public Datos(String valor1, String valor2, String valor3, String valor4, String valor5, int valor6, int valor7, int valor8, int valor9, int valor10, double valor11, double valor12, double valor13, double valor14, double valor15, int[] valor16, String[] valor17) {
+        this.valor1 = valor1;
+        this.valor2 = valor2;
+        this.valor3 = valor3;
+        this.valor4 = valor4;
+        this.valor5 = valor5;
+        this.valor6 = valor6;
+        this.valor7 = valor7;
+        this.valor8 = valor8;
+        this.valor9 = valor9;
+        this.valor10 = valor10;
+        this.valor11 = valor11;
+        this.valor12 = valor12;
+        this.valor13 = valor13;
+        this.valor14 = valor14;
+        this.valor15 = valor15;
+        this.valor16 = valor16;
+        this.valor17 = valor17;
+    }
+
+    
+    
     public Datos(String valor1, String valor2, String valor3, String valor4, String valor5, int valor6, int valor7, int valor8, int valor9, int valor10, double valor11, double valor12, double valor13, double valor14, double valor15) {
         this.valor1 = valor1;
         this.valor2 = valor2;
@@ -250,5 +275,33 @@ public class Datos {
      */
     public void setValor15(double valor15) {
         this.valor15 = valor15;
+    }
+
+    /**
+     * @return the valor16
+     */
+    public int[] getValor16() {
+        return valor16;
+    }
+
+    /**
+     * @param valor16 the valor16 to set
+     */
+    public void setValor16(int[] valor16) {
+        this.valor16 = valor16;
+    }
+
+    /**
+     * @return the valor17
+     */
+    public String[] getValor17() {
+        return valor17;
+    }
+
+    /**
+     * @param valor17 the valor17 to set
+     */
+    public void setValor17(String[] valor17) {
+        this.valor17 = valor17;
     }
 }

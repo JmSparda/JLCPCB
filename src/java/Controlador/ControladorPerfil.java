@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.ModeloPerfil;
+import include.Datos;
 import include.Perfil;
 
 /**
@@ -33,6 +34,23 @@ public class ControladorPerfil {
                                     "<a id='btneliminar' href=\"#\" class=\"btn btn-danger btn-xs\"><i class=\"icon-remove\"></i></a>\n" +
                                 "</td>\n" +
                         "</tr>";
+        }
+        return htmlcode;
+    }
+    
+    //CONSULTA EN CHECKBOX
+    public String consultaPERFILCHECKBOX(){
+        String htmlcode = "";
+        ModeloPerfil modperf = new ModeloPerfil();
+        for(Perfil p : modperf.consultaPerfilActivo()){
+            htmlcode +=
+                    "<li class=\"list-group-item\">\n" +
+"                           "+p.getProf_nombre()+"\n" +
+"                           <div class=\"material-switch pull-right\">\n" +
+"                               <input id='"+p.getProf_id()+"' name=\"usu_prof[]\" value='"+p.getProf_id()+"' type=\"checkbox\"/>\n" +
+"                               <label for='"+p.getProf_id()+"' class=\"label-primary\"></label>\n" +
+"                           </div>\n" +
+"                       </li>";
         }
         return htmlcode;
     }
@@ -122,5 +140,11 @@ public class ControladorPerfil {
     public boolean eliminarPERFIL(int id){
         ModeloPerfil mt = new ModeloPerfil();
         return mt.eliminarPerfil(id);
+    }
+    
+    //
+    public boolean crearUSUPROF(Datos d){
+        ModeloPerfil mp = new ModeloPerfil();
+        return mp.crearUsuProf(d);
     }
 }

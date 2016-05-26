@@ -65,6 +65,30 @@ public class ModeloUsuario extends Conexion{
         return usuario;
     }
     
+    //CONSULTAR USUARIO ACTIVO
+    public ArrayList<Usuario> consultaUsuarioActivo(){
+        ArrayList<Usuario> usuario = new ArrayList<>();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        try {
+            String sql = "call consultaUsuarioActivo()";
+            pst = getConnection().prepareCall(sql);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                usuario.add(new Usuario(rs.getInt(1),rs.getString(3) , rs.getString(5)));
+            }
+        } catch (Exception e) {
+        } finally{
+            try {
+                if(getConnection()!= null) getConnection().close();
+                if(pst !=null) pst.close();
+            } catch (Exception e) {
+                System.err.println("ErrorCone");
+            }
+        }
+        return usuario;
+    }
+    
     public Usuario obtenerUsuario(int idUsuario){
         Usuario usuario = null;
         PreparedStatement pst = null;

@@ -131,4 +131,15 @@ public class ControladorUsuario {
         return mt.eliminarUsuario(id);
     }
     
+    //CONSULTAR USUARIOS ACTIVO
+    public String consultaUsuarioCBX(){
+        String htmlcode = "";
+        ModeloUsuario modelot = new ModeloUsuario();
+        for (Usuario u : modelot.consultaUsuarioActivo()) {
+            htmlcode += "<option value='"+u.getUsu_id()+"'>"+u.getUsu_usuario()+"</option>";
+            //htmlcode += "<option value=\"DNI\">DNI</option>";
+        }
+        return htmlcode;
+    }
+    
 }

@@ -48,14 +48,14 @@
                                     <div class="widget">
                                         <h3 class="section-title first-title"><i class="icon-table"></i>Tabla Trabajadores</h3>
                                         <div class="text-right row">
-                                            <div class="col-md-10">
+                                            <div class="col-md-1">
                                                 <form action="crearempleado.jsp">
                                                     <button type="submit" class="btn btn-primary btn-round right">Registrar</button>
                                                 </form>
                                             </div>
-                                            <div class="col-md-1">
+                                            <!--<div class="col-md-1">
                                                 <button type="button" class="btn btn-success btn-round" data-toggle="modal" data-target="#myModalRegistro" data-backdrop="static" data-keyboard="false">Nuevo Usuario</button>
-                                            </div>
+                                            </div>-->
                                             
                                         </div>
                                         <br>

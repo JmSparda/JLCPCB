@@ -5,8 +5,8 @@
  */
 package Servlet;
 
-import Controlador.ControladorUsuario;
-import include.Usuario;
+import Controlador.ControladorPerfil;
+import include.Datos;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author FAST
  */
-public class ModificarUsuario extends HttpServlet {
+public class CrearUsuProf extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,16 +32,18 @@ public class ModificarUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        int valor2 = 0;
+        String[] usu_prof= request.getParameterValues("usu_prof[]");
+        int[] valores = new int[usu_prof.length];
         int usu_id = Integer.parseInt(request.getParameter("usu_id"));
-        String usu_usuario = request.getParameter("usu_usuario");
-        String usu_password = request.getParameter("usu_password");
-        String usu_estado = request.getParameter("usu_estado");
-        Usuario u =new Usuario(usu_id, usu_usuario, usu_password, usu_estado);
-        ControladorUsuario cu = new ControladorUsuario();
-        if(cu.updateUSUARIO(u)){
-            response.getWriter().print("1");
-        }else{
-            response.getWriter().print("0");
+        
+        for (int i = 0; i < usu_prof.length; i++) {
+            valores[i] = Integer.parseInt(usu_prof[i]);
+            valor2 = valores[i];
+            Datos d = new Datos("", "", "", "", "", usu_id, 0, valor2, 0, 0, 0, 0, 0, 0, 0, valores, usu_prof);
+            ControladorPerfil cp = new ControladorPerfil();
+            cp.crearUSUPROF(d);
         }
     }
 

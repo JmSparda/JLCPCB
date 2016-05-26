@@ -21,8 +21,8 @@
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/css/alertify.css" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link href="assets/css/form.css" rel="stylesheet" type="text/css"/>
+    
 </head>
 <body>
      <%

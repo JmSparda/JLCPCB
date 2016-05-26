@@ -1,5 +1,6 @@
 package Modelo;
 
+import include.Datos;
 import include.Perfil;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -48,6 +49,29 @@ public class ModeloPerfil extends Conexion {
         ResultSet rs = null;
         try {
             String sql = "call consultaPerfil()";
+            pst = getConnection().prepareCall(sql);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                perfil.add(new Perfil(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(6)));
+            }
+        } catch (Exception e) {
+        } finally{
+            try {
+                if(getConnection()!= null) getConnection().close();
+                if(pst !=null) pst.close();
+            } catch (Exception e) {
+                System.err.println("ErrorCone");
+            }
+        }
+        return perfil;
+    }
+    //CONSULTA PERFIL ACTIVO
+    public ArrayList<Perfil> consultaPerfilActivo(){
+        ArrayList<Perfil> perfil = new ArrayList<>();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        try {
+            String sql = "call consultaPerfilActivo()";
             pst = getConnection().prepareCall(sql);
             rs = pst.executeQuery();
             while(rs.next()){
@@ -136,6 +160,33 @@ public class ModeloPerfil extends Conexion {
                 flag = true;
             }
         } catch (Exception e) {
+        }finally{
+            try {
+                if(getConnection()!= null) getConnection().close();
+                if(pst !=null) pst.close();
+            } catch (Exception e) {
+                System.err.println("ErrorCone");
+            }
+        }
+        return flag;
+    }
+    
+    //CREAR USUARIO_PERFIL
+    public boolean crearUsuProf(Datos d){
+        
+        PreparedStatement pst = null;
+        boolean flag = false;
+        try {
+            String sql = "call crearUsuProf(?,?)";
+            pst = getConnection().prepareCall(sql);
+            pst.setInt(1, d.getValor6());
+            pst.setInt(2, d.getValor8());
+            
+            if(pst.executeUpdate()==1){
+                flag = true;
+            }
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }finally{
             try {
                 if(getConnection()!= null) getConnection().close();

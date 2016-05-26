@@ -56,9 +56,14 @@ $(function(){
                 //console.log(data);
                 $.post("updateUsuario",data, function(res,est,jqXHR){
                     //alert(res);
-                    setTimeout(function(){
+                    if(res === "1"){
                         window.location = "tabla-usuarios.jsp";
-                    },300);
+                    }else{
+                        alert("ERROR AL MODIFICAR");
+                    }
+                    /*setTimeout(function(){
+                        window.location = "tabla-usuarios.jsp";
+                    },300);*/
                 });
             });
        }
