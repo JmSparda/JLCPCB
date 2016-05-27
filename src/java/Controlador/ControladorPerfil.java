@@ -65,9 +65,39 @@ public class ControladorPerfil {
         }
         return htmlcode;
     }
-    
-    
-    
+
+    //MENU LATERAL 
+    public String consultaPerfilMenu(){
+        String htmlcode = "";
+        ModeloPerfil modelot = new ModeloPerfil();
+        
+        for (Perfil p : modelot.consultaPerfilActivo()) {
+        //class=\"active\"
+           htmlcode += "<li >";
+           htmlcode += "  <a class=\"is-dropdown-menu\">\n" +
+        "                       <span class=\"badge pull-right\"></span>\n" +
+        "                       <i class=\"icon-code-fork\"></i>"+p.getProf_nombre() +
+        "                   </a>";
+           // modelot.consultaModuloPerfilMenu(p.getProf_id());
+            
+           //modelot.consultaModuloPerfilMenu(p.getProf_id());
+            htmlcode += "<ul>";
+            ModeloPerfil mp = new ModeloPerfil();        
+            for (Datos d : mp.consultaModuloPerfilMenu2(p.getProf_id())) {
+                    htmlcode +="<li>\n" +
+            "                       <a href=\"elements.html\">\n" +
+            "                            <i class=\"icon-user\"></i>\n" +
+            "                            "+d.getValor1()+
+            "                       </a>\n" +
+        "                       </li>";
+            }
+            htmlcode += "</ul>";     
+            htmlcode += "</li>";
+        }
+        
+        
+        return htmlcode;
+    }
     
     //ACTUALIZAR PERFIL
     public String getEditViewPerfil(int idPerfil){
