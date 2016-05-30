@@ -140,6 +140,16 @@ public class ControladorModulo {
         return htmlcode;
     }
     
+    //CONSULTA MODULOS EN CMBBOX
+    public String consultaMODULOCBX(){
+        String htmlcode = "";
+        ModeloModulo mm = new ModeloModulo();
+        for(Modulo m : mm.consultaModuloActivo()){
+            htmlcode += "<option value='"+m.getModu_id()+"'>"+m.getModu_nombre()+"</option>";
+        }
+        return htmlcode;
+    }
+    
     public boolean crearPROFMODU(Datos d){
         ModeloModulo mm = new ModeloModulo();
         return mm.crearProfModuf(d);

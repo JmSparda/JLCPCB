@@ -235,4 +235,46 @@ $(document).ready(function(){ //utilizando VALIDATE de JQUERY
       
    });
    
+   
+   $("#frmregistroenlace").validate({
+      rules :{
+          modu_id : {
+              required : true
+          },
+          bli_enlace : {
+              required : true
+          },
+          bli_descripcion : {
+              required : true
+          }
+      },
+      messages : {
+          modu_id : {
+              required: "Selecione un Modulo"
+          },
+          bli_enlace : {
+              required : "Ingrese un Enlace"
+          },
+          bli_descripcion : {
+              required : "Ingrese una Descripción"
+          }
+      },
+      
+      submitHandler : function(form){
+           var data = $("#frmregistroenlace").serialize(); //Se serializan los datos
+           //console.log(data); // esto es para ver si ha enviado por consola la data serializada
+           $.post("addEnlace",data,function(res, est, jqXHR){
+               //alert(res);
+               if(res === "1"){
+                   window.location = "tabla-blienlace.jsp";
+               }else{
+                   alert("Error al Registrar Enlace");
+               }
+           });
+       }
+      
+   });
+   
+   
+   
 });

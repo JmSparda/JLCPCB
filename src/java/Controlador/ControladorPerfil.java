@@ -1,7 +1,9 @@
 package Controlador;
 
+import Modelo.ModeloEnlace;
 import Modelo.ModeloPerfil;
 import include.Datos;
+import include.Enlace;
 import include.Perfil;
 
 /**
@@ -74,28 +76,36 @@ public class ControladorPerfil {
         for (Perfil p : modelot.consultaPerfilActivo()) {
         //class=\"active\"
            htmlcode += "<li >";
-           htmlcode += "  <a class=\"is-dropdown-menu\">\n" +
-        "                       <span class=\"badge pull-right\"></span>\n" +
-        "                       <i class=\"icon-code-fork\"></i>"+p.getProf_nombre() +
-        "                   </a>";
-           // modelot.consultaModuloPerfilMenu(p.getProf_id());
-            
-           //modelot.consultaModuloPerfilMenu(p.getProf_id());
+           htmlcode += "   <a class=\"is-dropdown-menu\">\n" +
+        "                      <span class=\"badge pull-right\"></span>\n" +
+        "                      <i class=\"icon-code-fork\"></i>"+p.getProf_nombre() +
+        "                  </a>";
             htmlcode += "<ul>";
+            
             ModeloPerfil mp = new ModeloPerfil();        
             for (Datos d : mp.consultaModuloPerfilMenu2(p.getProf_id())) {
-                    htmlcode +="<li>\n" +
-            "                       <a href=\"elements.html\">\n" +
-            "                            <i class=\"icon-user\"></i>\n" +
-            "                            "+d.getValor1()+
-            "                       </a>\n" +
-        "                       </li>";
+                htmlcode +="<li>";
+            /*  htmlcode +="<a href='sdsd.html'>";
+                htmlcode +="<i class=\"icon-user\"></i>\n" +
+                "                            "+d.getValor1()+
+                "                       </a>\n" +
+                "                       </li>";*/
+                
+                
+                
+                    ModeloEnlace me = new ModeloEnlace();
+                    for(Enlace en : me.consultaEnlaceModulo(d.getValor7())){
+                        htmlcode +="<a href='"+en.getBli_enlace()+"'>";
+                    }
+                    
+                htmlcode +="<i class=\"icon-user\"></i>\n" +
+                "                            "+d.getValor1()+
+                "                       </a>\n" +
+                "                       </li>";
             }
             htmlcode += "</ul>";     
             htmlcode += "</li>";
         }
-        
-        
         return htmlcode;
     }
     

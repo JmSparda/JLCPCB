@@ -115,7 +115,7 @@ public class ModeloPerfil extends Conexion {
             pst.setInt(1, idPerfil);
             rs = pst.executeQuery();
             while(rs.next()){
-                datos.add (new Datos(rs.getString(3), "", "", "", "", rs.getInt(1), 0, 0, 0, 0, 0, 0, 0, 0, 0));
+                datos.add (new Datos(rs.getString(3), "", "", "", "", rs.getInt(1), rs.getInt(4), 0, 0, 0, 0, 0, 0, 0, 0));
             }
         } catch (Exception e) {
         } finally{

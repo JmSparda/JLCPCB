@@ -2,7 +2,6 @@ package Modelo;
 
 import include.Encriptar;
 import include.Usuario;
-import include.VariablesGlobales;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
