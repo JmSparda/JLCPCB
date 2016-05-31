@@ -3,14 +3,18 @@
     Created on : 23/05/2016, 07:57:27 PM
     Author     : FAST
 --%>
+<%@page import="include.Usuario"%>
 <%@page import="Controlador.ControladorPerfil"%>
 <%@page import="Controlador.ControladorTrabajador"%>
 <%@page import="Controlador.ControladorUsuario"%>
 <!DOCTYPE html>
 <%
-    ControladorUsuario cu = new ControladorUsuario();
     ControladorTrabajador ct = new ControladorTrabajador();
     ControladorPerfil cp = new ControladorPerfil();
+%>
+<%
+     HttpSession sesion = request.getSession(true);
+     Object usu_usuario = session.getAttribute("usu_usuario") == null ? null : session.getAttribute("usu_usuario");
 %>
 <html>
 <head>
@@ -27,6 +31,13 @@
     <title>Tabla de Usuarios</title>
 </head>
 <body class="body-dark-linen">
+        <!------CREAR UNA CONEXION Y CONSULTA DE USUARIO LOGUEADO-------->
+        <%
+            if(usu_usuario != null){
+                ControladorUsuario cu = new ControladorUsuario();
+                Usuario user = new Usuario(usu_usuario.toString());
+        %>
+    <!--------------------------------------------------------------->
     <div class="all-wrapper">
         <div class="row">
             <div class="col-md-3">
@@ -39,6 +50,8 @@
                     </button>
                 </div>
                 <!--BARRA LATERAL IZQUIERDA-->
+                <div class="side-bar-wrapper collapse navbar-collapse navbar-ex1-collapse">
+                <%=cu.getViewUserFoto(user)%>
                 <jsp:include page="assets/estructura/BLI.jsp" flush="true" />
                 <!--FIN DE LA BARRA LATERAL IZQUIERDA-->
             </div>
@@ -201,6 +214,16 @@
 </div>  
 
 </body>
+<!----------------FIN DE CONSULTA LOGIN------------------->
+        <%
+            }else{
+        %>
+    <script>
+        window.location = "index.jsp";
+     </script>
+        <%   }
+        %>
+<!----------------------------------------------------------->
 <script src="assets/ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="assets/ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script src="assets/js/jquery.validate.min.js" type="text/javascript"></script>

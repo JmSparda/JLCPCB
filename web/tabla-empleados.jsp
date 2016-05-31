@@ -3,10 +3,16 @@
     Created on : 12/05/2016, 08:25:35 PM
     Author     : FAST
 --%>
+<%@page import="Controlador.ControladorUsuario"%>
+<%@page import="include.Usuario"%>
 <%@page import="Modelo.ModeloTrabajador"%>
 <%@page import="Controlador.ControladorTrabajador"%>
 <%
     ControladorTrabajador ct = new ControladorTrabajador();
+%>
+<%
+     HttpSession sesion = request.getSession(true);
+     Object usu_usuario = session.getAttribute("usu_usuario") == null ? null : session.getAttribute("usu_usuario");
 %>
 <!DOCTYPE html>
 <html>
@@ -20,6 +26,13 @@
     <title>Tabla de Trabajadores</title>
 </head>
 <body class="body-dark-linen">
+    <!------CREAR UNA CONEXION Y CONSULTA DE USUARIO LOGUEADO-------->
+        <%
+            if(usu_usuario != null){
+                Controlador.ControladorUsuario cu = new ControladorUsuario();
+                Usuario user = new Usuario(usu_usuario.toString());
+        %>
+    <!--------------------------------------------------------------->
     <div class="all-wrapper">
         <div class="row">
             <div class="col-md-3">
@@ -32,8 +45,10 @@
                     </button>
                 </div>
                 <!--BARRA LATERAL IZQUIERDA-->
-                <jsp:include page="assets/estructura/BLI.jsp" flush="true" />
-                <!--FIN DE LA BARRA LATERAL IZQUIERDA-->
+            <div class="side-bar-wrapper collapse navbar-collapse navbar-ex1-collapse">
+            <%=cu.getViewUserFoto(user)%>
+            <jsp:include page="assets/estructura/BLI.jsp" flush="true" />
+            <!--FIN DE LA BARRA LATERAL IZQUIERDA-->
             </div>
                 <div class="col-md-9">
                     <div class="content-wrapper">
@@ -156,6 +171,16 @@
   </div>
 </div>                                             
 </body>
+<!----------------FIN DE CONSULTA LOGIN------------------->
+        <%
+            }else{
+        %>
+    <script>
+        window.location = "index.jsp";
+     </script>
+        <%   }
+        %>
+<!----------------------------------------------------------->
 <script src="assets/ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="assets/ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>

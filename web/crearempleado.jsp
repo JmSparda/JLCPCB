@@ -4,11 +4,17 @@
     Author     : JMLOPEZ
 --%>
 
+<%@page import="Controlador.ControladorUsuario"%>
+<%@page import="include.Usuario"%>
 <%@page import="Controlador.ControladorTrabajador"%>
 <%@page import="Controlador.ControladorConsultas"%>
 <%
     ControladorConsultas cc = new ControladorConsultas();
     ControladorTrabajador ct = new ControladorTrabajador();
+%>
+<%
+     HttpSession sesion = request.getSession(true);
+     Object usu_usuario = session.getAttribute("usu_usuario") == null ? null : session.getAttribute("usu_usuario");
 %>
 <!DOCTYPE html>
 <html>
@@ -22,6 +28,13 @@
   <title>REGISTRO EMPLEADOS</title>
 </head>
 <body>
+    <!------CREAR UNA CONEXION Y CONSULTA DE USUARIO LOGUEADO-------->
+        <%
+            if(usu_usuario != null){
+                Controlador.ControladorUsuario cu = new ControladorUsuario();
+                Usuario user = new Usuario(usu_usuario.toString());
+        %>
+    <!--------------------------------------------------------------->
 <div class="all-wrapper">
   <div class="row">
     <div class="col-md-3">
@@ -34,7 +47,9 @@
         </button>
       </div>
 <!--BARRA LATERAL IZQUIERDA-->
-<jsp:include page="assets/estructura/BLI.jsp" flush="true" />
+            <div class="side-bar-wrapper collapse navbar-collapse navbar-ex1-collapse">
+            <%=cu.getViewUserFoto(user)%>
+            <jsp:include page="assets/estructura/BLI.jsp" flush="true" />
 <!--FIN DE LA BARRA LATERAL IZQUIERDA-->
     </div>
     <div class="col-md-9">
@@ -204,6 +219,16 @@
   </div>
 </div>
 </body>
+<!----------------FIN DE CONSULTA LOGIN------------------->
+        <%
+            }else{
+        %>
+    <script>
+        window.location = "index.jsp";
+     </script>
+        <%   }
+        %>
+<!----------------------------------------------------------->
 <script src="assets/ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src='assets/estilos2.js'></script>
 <script src="assets/js/validacion.js" type="text/javascript"></script>

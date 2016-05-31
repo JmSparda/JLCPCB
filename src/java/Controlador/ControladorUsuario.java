@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.ModeloUsuario;
+import include.Datos;
 import include.Usuario;
 
 /**
@@ -23,6 +24,19 @@ public class ControladorUsuario {
         String htmlcode = "";
         htmlcode += "<h2>Bienvenido " + u.getUsu_usuario()+ "</h2>";
         htmlcode += "<div><a href='logout'>Cerrar Session</a></div>";
+        return htmlcode;
+    }
+    
+    public String getViewUserFoto(Usuario u){
+        String htmlcode = "";
+        htmlcode += "<a href='dashboard.jsp' class=\"logo hidden-sm hidden-xs\">";
+        //htmlcode += "<img WIDTH=100 HEIGHT=150 src=\"assets/img/trabajadores/JUAN MANUEL CABANILLAS LOPEZ.jpg\" alt=\"\"/>";
+        ModeloUsuario mu = new ModeloUsuario();
+        for(Datos d : mu.consultaDetalleUsuario(u.getUsu_usuario())){
+            htmlcode += "<img WIDTH=100 HEIGHT=150 src="+d.getValor1()+" alt=\"\"/>";
+        }
+        htmlcode +="    <span>"+u.getUsu_usuario()+"</span>\n" +
+        "            </a>";
         return htmlcode;
     }
     

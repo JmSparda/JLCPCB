@@ -1,5 +1,6 @@
 package Modelo;
 
+import include.Datos;
 import include.Encriptar;
 import include.Usuario;
 import java.sql.PreparedStatement;
@@ -163,6 +164,32 @@ public class ModeloUsuario extends Conexion{
         }
         return flag;
     }
+    
+    ///CONSULTAR DATOS DE UN USUARIO
+    public ArrayList<Datos>consultaDetalleUsuario(String usuusuario){
+        ArrayList<Datos> datos = new ArrayList<>();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        try {
+            String sql = "call consultaDetalleUsuario(?) ";
+            pst = getConnection().prepareCall(sql);
+            pst.setString(1, usuusuario);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                datos.add (new Datos(rs.getString(7), "", "", "", "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+            }
+        } catch (Exception e) {
+        } finally{
+            try {
+                if(getConnection()!= null) getConnection().close();
+                if(pst !=null) pst.close();
+            } catch (Exception e) {
+                System.err.println("ErrorCone");
+            }
+        }
+        return datos;
+    }   
+    ////////////////////////////////
     
     
     

@@ -9,6 +9,6 @@
         <i class="icon-comments"></i> User Alerts
     </a>
     <a href="#">
-        <i class="icon-signout"></i> Logout
+        <a href='logout'><i class="icon-signout"></i> Logout</a>
     </a>
 </div>
